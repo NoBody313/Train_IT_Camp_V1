@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:padding="16dp"
     android:layout_height="match_parent"
-    tools:context="presentation.add.AddFragment">
+    tools:context=".presentation.add.AddFragment">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar_add"
@@ -19,7 +20,7 @@
         android:background="@drawable/bg_light_gray_radius"
         app:layout_constraintBottom_toBottomOf="@id/edit_title"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/edit_title" />
 
     <EditText
         android:id="@+id/edit_title"
