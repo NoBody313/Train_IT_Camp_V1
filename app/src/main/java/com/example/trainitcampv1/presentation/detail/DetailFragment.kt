@@ -1,60 +1,78 @@
 package com.example.trainitcampv1.presentation.detail
 
+import android.app.AlertDialog
 import android.os.Bundle
+import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.trainitcampv1.R
+import com.example.trainitcampv1.databinding.FragmentDetailBinding
+import com.example.trainitcampv1.presentation.NotesViewModel
+import com.example.trainitcampv1.utils.ExtensionFunction.setupActionBar
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [DetailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class DetailFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    // Private
+    private var _binding: FragmentDetailBinding? = null
+    private val binding get() = _binding as FragmentDetailBinding
+    private val navArgs by navArgs<DetailFragmentArgs>()
+    private val detailViewModel by viewModels<NotesViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail, container, false)
+        _binding = FragmentDetailBinding.inflate(layoutInflater)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DetailFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DetailFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
+        binding.safeArgs = navArgs
+        binding.toolbarDetail.setupActionBar(this, R.id.detailFragment)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_detail, menu)
+    }
+
+    // Parameter
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_update -> {
+                val action =DetailFragmentDirections.actionDetailFragmentToUpdateFragment(navArgs.currentItem)
+                findNavController().navigate(action)
             }
+            R.id.menu_delete -> deleteItem()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun deleteItem() {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Delete '${navArgs.currentItem.title}'?")
+            .setMessage("Are you sure want to remove '${navArgs.currentItem.title}'",)
+            .setPositiveButton("Yes") { _, _, ->
+                detailViewModel.deleteData(navArgs.currentItem)
+                Toast.makeText(
+                    requireContext(),
+                    "Successfully Removed: ${navArgs.currentItem.title}",
+                    Toast.LENGTH_SHORT
+                ).show()
+                findNavController().navigate(R.id.action_detailFragment_to_homeFragment)
+            }
+            .setNegativeButton("No") {_, _ ->}
+            .create()
+            .show()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

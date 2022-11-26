@@ -14,18 +14,20 @@ import com.example.trainitcampv1.presentation.NotesViewModel
 import com.example.trainitcampv1.utils.ExtensionFunction.setupActionBar
 import com.example.trainitcampv1.utils.HelperFunctions.dateTodaySimpleFormat
 import com.example.trainitcampv1.utils.HelperFunctions.parseToPriority
+import com.example.trainitcampv1.utils.HelperFunctions.spinnerListener
 import com.example.trainitcampv1.utils.HelperFunctions.verifyDataFromUser
 
 class AddFragment : Fragment() {
 
     private var _binding:FragmentAddBinding? = null
     private val binding get() = _binding as FragmentAddBinding
+
     private val addViewModel by viewModels<NotesViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentAddBinding.inflate(layoutInflater)
         return binding.root
@@ -36,13 +38,16 @@ class AddFragment : Fragment() {
         setHasOptionsMenu(true)
         binding.apply {
             toolbarAdd.setupActionBar(this@AddFragment, R.id.addFragment)
+            spinnerPriorities.onItemSelectedListener = spinnerListener(context, binding.priorityIndicator)
         }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_save, menu)
         val item = menu.findItem(R.id.menu_save)
-        item.actionView.findViewById<AppCompatImageButton>(R.id.btn_save).setOnClickListener {
+
+        // Fitur Geeessss
+        item.actionView?.findViewById<AppCompatImageButton>(R.id.btn_save)?.setOnClickListener {
             insertNotes()
         }
     }
