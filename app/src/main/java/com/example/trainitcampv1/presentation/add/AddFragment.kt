@@ -47,7 +47,7 @@ class AddFragment : Fragment() {
         val item = menu.findItem(R.id.menu_save)
 
         // Fitur Geeessss
-        item.actionView?.findViewById<AppCompatImageButton>(R.id.btn_save)?.setOnClickListener {
+        item.actionView.findViewById<AppCompatImageButton>(R.id.btn_save).setOnClickListener {
             insertNotes()
         }
     }

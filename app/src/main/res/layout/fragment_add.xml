@@ -19,7 +19,7 @@
         android:layout_height="30dp"
         android:background="@drawable/bg_light_gray_radius"
         app:layout_constraintBottom_toBottomOf="@id/edit_title"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/edit_title" />
 
     <EditText
@@ -55,6 +55,7 @@
             android:background="@android:color/transparent"
             android:textColor="@color/gray"
             android:textSize="16sp"
+            android:text="@string/txt_priority"
             app:layout_constraintBottom_toBottomOf="@id/cv_priority"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/cv_priority" />
@@ -93,7 +94,6 @@
                     app:cardBackgroundColor="@color/pink"
                     app:cardCornerRadius="100dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@id/spinner_priorities"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -101,7 +101,7 @@
                     android:id="@+id/spinner_priorities"
                     android:layout_width="0dp"
                     android:layout_height="35dp"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="24dp"
                     android:entries="@array/priorities"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -131,24 +131,24 @@
                 android:paddingEnd="16dp"
                 android:textSize="16sp" />
         </com.google.android.material.card.MaterialCardView>
-
-        <EditText
-            android:id="@+id/edit_description"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/custom_input"
-            android:ems="10"
-            android:gravity="start|top"
-            android:hint="@string/txt_description"
-            android:importantForAutofill="no"
-            android:inputType="textMultiLine"
-            android:paddingStart="24dp"
-            android:paddingTop="16dp"
-            android:paddingEnd="24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view_2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <EditText
+        android:id="@+id/edit_description"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/custom_input"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/txt_description"
+        android:importantForAutofill="no"
+        android:inputType="textMultiLine"
+        android:paddingStart="24dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

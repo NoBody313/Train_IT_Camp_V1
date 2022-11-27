@@ -6,6 +6,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import com.example.trainitcampv1.data.entity.Notes
 
 @Dao
@@ -28,6 +29,9 @@ interface NotesDao {
 
     @Delete
     suspend fun deleteNotes(notes: Notes)
+
+    @Update
+    suspend fun updateNotes(notes: Notes)
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertNotes(notes: Notes)

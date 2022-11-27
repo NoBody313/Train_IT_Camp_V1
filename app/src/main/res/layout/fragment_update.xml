@@ -112,7 +112,7 @@
                         android:layout_height="35dp"
                         android:layout_marginStart="16dp"
                         android:entries="@array/priorities"
-                        android:parsePriorityToInt="@{safeArgs.currentItem.priority}"
+                        android:parsePriorityToPoint="@{safeArgs.currentItem.priority}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@id/priority_indicator"
