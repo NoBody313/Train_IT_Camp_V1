@@ -12,6 +12,9 @@ import com.example.trainitcampv1.data.entity.Notes
 @Dao
 interface NotesDao {
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertNotes(notes: Notes)
+
     @Query("SELECT * FROM notes_table ORDER BY id ASC")
     fun getAllNotes(): LiveData<List<Notes>>
 
@@ -32,7 +35,4 @@ interface NotesDao {
 
     @Update
     suspend fun updateNotes(notes: Notes)
-
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertNotes(notes: Notes)
 }

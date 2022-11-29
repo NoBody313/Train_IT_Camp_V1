@@ -5,6 +5,8 @@
     <item
         android:id="@+id/menu_save"
         android:title="@string/txt_save"
-        android:actionLayout="@layout/layout_menu_save"
-        app:showAsAction="ifRoom"/>
+        android:orderInCategory="100"
+        app:actionLayout="@layout/layout_menu_save"
+        app:showAsAction="ifRoom" />
+    <!--   Fak harusnya "app:actionLayout" bukan "android:actionLayout"   -->
 </menu>

@@ -11,7 +11,7 @@ import com.example.trainitcampv1.R
 import com.example.trainitcampv1.data.entity.Notes
 import com.example.trainitcampv1.databinding.FragmentAddBinding
 import com.example.trainitcampv1.presentation.NotesViewModel
-import com.example.trainitcampv1.utils.ExtensionFunction.setupActionBar
+import com.example.trainitcampv1.utils.ExtensionFunctions.setupActionBar
 import com.example.trainitcampv1.utils.HelperFunctions.dateTodaySimpleFormat
 import com.example.trainitcampv1.utils.HelperFunctions.parseToPriority
 import com.example.trainitcampv1.utils.HelperFunctions.spinnerListener

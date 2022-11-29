@@ -15,32 +15,11 @@ class NotesViewModel(application: Application) : AndroidViewModel(application) {
     private val notesDao = NotesDatabase.getDatabase(application).notesDao()
     private val repository: NotesRepository = NotesRepository(notesDao)
 
+    fun getAllData(): LiveData<List<Notes>> = repository.getAllNotes
+
     fun insertData(notes: Notes) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.insertNotes(notes)
-        }
-    }
-
-    fun getAllData(): LiveData<List<Notes>> = repository.getAllNotes
-
-    fun searchNoteByQuery(searchQuery: String): LiveData<List<Notes>> {
-        return repository.searchNoteByQuery(searchQuery)
-    }
-
-    fun sortByHighPriority(): LiveData<List<Notes>> = repository.sortByHighPriority
-    fun sortByLowPriority(): LiveData<List<Notes>> = repository.sortByLowPriority
-
-    // Delete All
-    fun deleteAllData() {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.deleteAll()
-        }
-    }
-
-    // Delete Data
-    fun deleteData(notes: Notes) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.deleteNotes(notes)
         }
     }
 
@@ -50,4 +29,24 @@ class NotesViewModel(application: Application) : AndroidViewModel(application) {
             repository.updateNotes(notes)
         }
     }
+    // Delete Data
+    fun deleteData(notes: Notes) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteNotes(notes)
+        }
+    }
+
+    // Delete All
+    fun deleteAllData() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteAll()
+        }
+    }
+
+    fun searchNoteByQuery(searchQuery: String): LiveData<List<Notes>> {
+        return repository.searchNoteByQuery(searchQuery)
+    }
+
+    fun sortByHighPriority(): LiveData<List<Notes>> = repository.sortByHighPriority
+    fun sortByLowPriority(): LiveData<List<Notes>> = repository.sortByLowPriority
 }

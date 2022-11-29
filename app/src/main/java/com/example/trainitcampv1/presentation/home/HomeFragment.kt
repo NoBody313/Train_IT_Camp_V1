@@ -14,8 +14,8 @@ import com.example.trainitcampv1.R
 import com.example.trainitcampv1.data.entity.Notes
 import com.example.trainitcampv1.databinding.FragmentHomeBinding
 import com.example.trainitcampv1.presentation.NotesViewModel
-import com.example.trainitcampv1.utils.ExtensionFunction.observeOnce
-import com.example.trainitcampv1.utils.ExtensionFunction.setupActionBar
+import com.example.trainitcampv1.utils.ExtensionFunctions.observeOnce
+import com.example.trainitcampv1.utils.ExtensionFunctions.setupActionBar
 import com.example.trainitcampv1.utils.HelperFunctions
 import com.example.trainitcampv1.utils.HelperFunctions.checkIfDatabaseEmpty
 import com.google.android.material.snackbar.Snackbar
@@ -101,11 +101,6 @@ class HomeFragment : androidx.fragment.app.Fragment(), SearchView.OnQueryTextLis
     }
 
 
-    override fun onDestroy() {
-        super.onDestroyView()
-        _binding = null
-    }
-
     // Private Fun Section
     private fun searchNote(query: String) {
         val searchQuery = "%$query%"
@@ -166,5 +161,10 @@ class HomeFragment : androidx.fragment.app.Fragment(), SearchView.OnQueryTextLis
             }
             .setActionTextColor(ContextCompat.getColor(view.context, R.color.black))
             .show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroyView()
+        _binding = null
     }
 }

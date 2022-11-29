@@ -1,13 +1,11 @@
 package com.example.trainitcampv1.utils
 
-import android.os.Build
 import android.view.View
 import android.widget.Spinner
-import androidx.annotation.RequiresApi
-import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.findNavController
+import androidx.databinding.BindingAdapter
 import com.example.trainitcampv1.R
 import com.example.trainitcampv1.data.entity.Notes
 import com.example.trainitcampv1.data.entity.Priority
@@ -16,7 +14,7 @@ import com.google.android.material.card.MaterialCardView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 object BindingAdapter {
-    @androidx.databinding.BindingAdapter("android:navigateToAddFragment")
+    @BindingAdapter("android:navigateToAddFragment")
     @JvmStatic
     fun navigateToAddFragment(view: FloatingActionButton, navigate: Boolean) {
         view.setOnClickListener {
@@ -26,7 +24,7 @@ object BindingAdapter {
         }
     }
 
-    @androidx.databinding.BindingAdapter("android:emptyDatabase")
+    @BindingAdapter("android:emptyDatabase")
     @JvmStatic
     fun emptyDatabase(view: View, emptyDatabase: MutableLiveData<Boolean>) {
         when (emptyDatabase.value) {
@@ -35,8 +33,8 @@ object BindingAdapter {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
-    @androidx.databinding.BindingAdapter("android:parsePriorityColor")
+//    @RequiresApi(Build.VERSION_CODES.M)
+    @BindingAdapter("android:parsePriorityColor")
     @JvmStatic
     fun parsePriorityColor(cardView: MaterialCardView, priority: Priority) {
         when (priority) {
@@ -52,7 +50,7 @@ object BindingAdapter {
         }
     }
 
-    @androidx.databinding.BindingAdapter("android:sendDataToDetail")
+    @BindingAdapter("android:sendDataToDetail")
     @JvmStatic
     fun sendDataToDetail(view: ConstraintLayout, currentItem: Notes) {
         view.setOnClickListener{
@@ -61,7 +59,7 @@ object BindingAdapter {
         }
     }
 
-    @androidx.databinding.BindingAdapter("android:parsePriorityToPoint")
+    @BindingAdapter("android:parsePriorityToPoint")
     @JvmStatic
     fun parsePriorityToInt(view: Spinner, priority: Priority) {
         when (priority) {

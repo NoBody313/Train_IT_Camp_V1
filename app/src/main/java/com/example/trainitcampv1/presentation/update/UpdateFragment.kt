@@ -12,7 +12,7 @@ import com.example.trainitcampv1.R
 import com.example.trainitcampv1.data.entity.Notes
 import com.example.trainitcampv1.databinding.FragmentUpdateBinding
 import com.example.trainitcampv1.presentation.NotesViewModel
-import com.example.trainitcampv1.utils.ExtensionFunction.setupActionBar
+import com.example.trainitcampv1.utils.ExtensionFunctions.setupActionBar
 import com.example.trainitcampv1.utils.HelperFunctions.dateTodaySimpleFormat
 import com.example.trainitcampv1.utils.HelperFunctions.parseToPriority
 import com.example.trainitcampv1.utils.HelperFunctions.spinnerListener
@@ -50,7 +50,7 @@ class UpdateFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.id.menu_save, menu)
+        inflater.inflate(R.menu.menu_save, menu)
 
         val item = menu.findItem(R.id.menu_save)
         item.actionView.findViewById<AppCompatImageButton>(R.id.btn_save).setOnClickListener {

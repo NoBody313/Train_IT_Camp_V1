@@ -11,7 +11,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.trainitcampv1.R
 import com.example.trainitcampv1.databinding.FragmentDetailBinding
 import com.example.trainitcampv1.presentation.NotesViewModel
-import com.example.trainitcampv1.utils.ExtensionFunction.setupActionBar
+import com.example.trainitcampv1.utils.ExtensionFunctions.setupActionBar
 
 class DetailFragment : Fragment() {
 
